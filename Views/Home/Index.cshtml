@@ -1,0 +1,67 @@
+﻿@model Clique_Simples.Models.ContadorModel
+
+@{
+    ViewData["Title"] = "Contador de Cliques";
+}
+
+<style>
+    /* Estilos para centralizar e aplicar a paleta de cores */
+    body {
+        background-color: #2A428C; /* Ebony Clay para o fundo */
+        color: #FFFFFF; /* Texto branco para melhor contraste */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .container-cliques {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 80vh; /* Ocupa a maior parte da altura da tela */
+    }
+
+    .contador-display {
+        font-size: 2rem; /* Tamanho maior para o parágrafo */
+        margin-bottom: 20px;
+    }
+
+    .contador-display strong {
+        color: #FFEF4D; /* Sandy Yellow para destacar o número */
+        font-size: 3rem; /* Número ainda maior */
+        display: block; /* Faz o número ficar em uma nova linha */
+        margin-top: 10px;
+    }
+
+    .btn-contar {
+        background-color: #FFEF4D; /* Sandy Yellow para o botão */
+        color: #2A428C; /* Ebony Clay para o texto do botão */
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .btn-contar:hover {
+        transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+    }
+</style>
+
+<div class="container-cliques">
+    <h1>@ViewData["Title"]</h1>
+    <hr style="width: 50%; border-color: #FFEF4D;" />
+
+    <!-- Exibe o número de cliques atual -->
+    <p class="contador-display">
+        O número atual de cliques é:
+        <strong>@Model.Cliques</strong>
+    </p>
+
+    <!-- Formulário que faz POST para a Action Contar -->
+    <form asp-action="Contar" method="post">
+        <button type="submit" class="btn-contar">Clique para Contar</button>
+    </form>
+</div>
